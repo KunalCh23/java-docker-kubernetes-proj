@@ -10,9 +10,9 @@ spec:
   selector:
     app: productcatalogue
   ports:
-  - protocol: TCP
-    port: 8020
-    name: http
+  - port: 80
+    targetPort: 8020 
+    nodePort: 30006
 
 ---
 apiVersion: apps/v1
@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: productcatalogue
-        image: thetips4you/productcatalogue:latest
+        image: kunalch23/productcatalogue:latest
         ports:
         - containerPort: 8020
         livenessProbe:
